@@ -14,6 +14,7 @@ RUN export DEBIAN_FRONTEND=nonintieractive; \
         php5-gd \
         php5-mcrypt \
         php5-mysql \
+        php5-pgsql \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

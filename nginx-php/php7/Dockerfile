@@ -19,6 +19,7 @@ RUN export DEBIAN_FRONTEND=nonintieractive; \
         php7.0-mbstring \
         php7.0-mcrypt \
         php7.0-mysql \
+        php7.0-pgsql \
         php7.0-xml \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
