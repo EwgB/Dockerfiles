@@ -1,4 +1,4 @@
-FROM lightcode/nginx-php:php7.0
+FROM ewgb/nginx-php:php7.0
 
 ARG TTRSS_COMMIT
 ARG THEME_FEEDLY_COMMIT
