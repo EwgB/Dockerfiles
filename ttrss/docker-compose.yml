@@ -2,23 +2,22 @@
 
 version: '2'
 services:
-  mysql:
-    image: mysql
+  pgsql:
+    image: postgres
     environment:
-      - MYSQL_ROOT_PASSWORD=rootpassword
-      - MYSQL_DATABASE=ttrss
-      - MYSQL_USER=ttrss
-      - MYSQL_PASSWORD=ttrsspassword
+      - POSTGRES_DB=ttrss
+      - POSTGRES_USER=ttrss
+      - POSTGRES_PASSWORD=ttrsspassword
 
   ttrss:
     build: .
-    image: lightcode/ttrss
+    image: ewgb/ttrss
     ports:
       - "8080:80"
     links:
-      - mysql
+      - pgsql
     environment:
-      - TTRSS_DB_HOST=mysql
+      - TTRSS_DB_HOST=pgsql
       - TTRSS_DB_USER=ttrss
       - TTRSS_DB_NAME=ttrss
       - TTRSS_DB_PASS=ttrsspassword
