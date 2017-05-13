@@ -17,9 +17,6 @@ require_once "sanity_check.php";
 require_once "db.php";
 require_once "db-prefs.php";
 
-mysqli_report(MYSQLI_REPORT_STRICT);
-
-
 $not_connected = true;
 while ($not_connected) {
     $not_connected = false;
@@ -27,7 +24,7 @@ while ($not_connected) {
     echo "Attempt to connect to database...\n";
 
     try {
-        $connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        $connection = pg_connect(sprintf("host=%s dbname=%s user=%s password=%s", DB_HOST, DB_NAME, DB_USER, DB_PASS));
     } catch (Exception $e) {
         echo "Cannot connect to MySQL: " . $e->getMessage() . "\n";
         $not_connected = true;
@@ -35,7 +32,7 @@ while ($not_connected) {
     }
 }
 
-echo "Connected to " . $connection->host_info . "\n";
+echo "Connected to " . pg_host($connection) . "\n";
 
 
 $is_ttrss_installed = db_query("SELECT schema_version FROM ttrss_version", false);
