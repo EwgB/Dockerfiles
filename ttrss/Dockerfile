@@ -4,11 +4,12 @@ ARG TTRSS_COMMIT
 ARG THEME_FEEDLY_COMMIT
 
 RUN mkdir -p /app \
-    && curl -Lv "http://tt-rss.org/gitlab/fox/tt-rss/repository/archive.tar.gz?ref=${TTRSS_COMMIT}" | tar xz -C /tmp \
-    && mv /tmp/tt-rss.git/* /app \
+    && curl -Lv "https://tt-rss.org/fox/tt-rss/repository/archive.tar.gz?ref=${TTRSS_COMMIT}" | tar xz -C /tmp \
+    && mv /tmp/tt-rss-*/* /app \
     && rm -rf /tmp/tt-rss.git /app/install /app/config.php-dist
 
-RUN curl -Lv https://github.com/levito/tt-rss-feedly-theme/archive/${THEME_FEEDLY_COMMIT}.tar.gz | tar xz -C /tmp \
+RUN mkdir -p /app/themes \
+    && curl -Lv https://github.com/levito/tt-rss-feedly-theme/archive/${THEME_FEEDLY_COMMIT}.tar.gz | tar xz -C /tmp \
     && mv /tmp/tt-rss-feedly-theme-*/feedly.css /tmp/tt-rss-feedly-theme-*/feedly /app/themes \
     && rm -rf /tmp/tt-rss-feedly-theme-*
 
