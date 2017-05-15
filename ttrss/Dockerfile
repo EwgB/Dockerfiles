@@ -3,13 +3,10 @@ FROM ewgb/nginx-php:php7.0
 ARG TTRSS_COMMIT
 ARG THEME_FEEDLY_COMMIT
 
-RUN apt-get update && apt-get install -y\
-    curl \
-    git
-
 RUN mkdir -p /app \
-    && git clone https://tt-rss.org/fox/tt-rss.wiki.git -b ${TTRSS_COMMIT} /app \
-    && rm -rf /app/install /app/config.php-dist
+    && curl -Lv "https://tt-rss.org/fox/tt-rss/repository/archive.tar.gz?ref=${TTRSS_COMMIT}" | tar xz -C /tmp \
+    && mv /tmp/tt-rss.git/* /app \
+    && rm -rf /tmp/tt-rss.git /app/install /app/config.php-dist
 
 RUN curl -Lv https://github.com/levito/tt-rss-feedly-theme/archive/${THEME_FEEDLY_COMMIT}.tar.gz | tar xz -C /tmp \
     && mv /tmp/tt-rss-feedly-theme-*/feedly.css /tmp/tt-rss-feedly-theme-*/feedly /app/themes \
