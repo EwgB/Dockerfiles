@@ -4,6 +4,7 @@
 define("TTRSS_ROOT_PATH", "/app");
 
 set_include_path(TTRSS_ROOT_PATH ."/include" . PATH_SEPARATOR . get_include_path());
+set_include_path(TTRSS_ROOT_PATH ."/classes" . PATH_SEPARATOR . get_include_path());
 
 define('DISABLE_SESSIONS', true);
 
@@ -11,7 +12,7 @@ chdir(TTRSS_ROOT_PATH);
 
 require_once "autoload.php";
 require_once "functions.php";
-require_once "rssfuncs.php";
+require_once "rssutils.php";
 require_once "config.php";
 require_once "sanity_check.php";
 require_once "db.php";
