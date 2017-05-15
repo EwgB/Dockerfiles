@@ -17,7 +17,9 @@ services:
     links:
       - pgsql
     environment:
+      - TTRSS_DB_TYPE=pgsql
       - TTRSS_DB_HOST=pgsql
+      - TTRSS_DB_PORT=5432
       - TTRSS_DB_USER=ttrss
       - TTRSS_DB_NAME=ttrss
       - TTRSS_DB_PASS=ttrsspassword
