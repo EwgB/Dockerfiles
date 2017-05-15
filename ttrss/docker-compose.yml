@@ -12,7 +12,7 @@ services:
 
   ttrss:
     build: .
-    image: lightcode/ttrss
+    image: ewgb/ttrss:mysql
     ports:
       - "8080:80"
     links:
