@@ -3,8 +3,8 @@
 
 define("TTRSS_ROOT_PATH", "/app");
 
-set_include_path(TTRSS_ROOT_PATH ."/include" . PATH_SEPARATOR . get_include_path());
 set_include_path(TTRSS_ROOT_PATH ."/classes" . PATH_SEPARATOR . get_include_path());
+set_include_path(TTRSS_ROOT_PATH ."/include" . PATH_SEPARATOR . get_include_path());
 
 define('DISABLE_SESSIONS', true);
 
