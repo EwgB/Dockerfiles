@@ -4,7 +4,7 @@ ARG TTRSS_COMMIT
 ARG THEME_FEEDLY_COMMIT
 
 RUN mkdir -p /app \
-    && curl -Lv "https://tt-rss.org/fox/tt-rss/repository/archive.tar.gz?ref=${TTRSS_COMMIT:-master}" | tar xz -C /tmp \
+    && curl -Lv https://git.tt-rss.org/fox/tt-rss/archive/${TTRSS_COMMIT:-master}.tar.gz | tar xz -C /tmp \
     && mv /tmp/tt-rss-*/* /app \
     && rm -rf /tmp/tt-rss.git /app/install /app/config.php-dist
 
