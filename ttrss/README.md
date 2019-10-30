@@ -6,13 +6,18 @@ The version of tt-rss is pinned into the Dockerfile to try to have a stable rele
 
 The Docker image includes the [Feedly theme](https://github.com/levito/tt-rss-feedly-theme).
 
+There are two versions of the image, with a MySQL database and a PostgreSQL database. Postgres is the preferred option according to the TT-RSS developer, and seems to perform much better on weaker hardware.
 
 ## Get the image
 
 You can pull the image from the Docker Hub:
 
 ```
-$ docker pull lightcode/ttrss
+$ docker pull ewgb/ttrss:postgres
+```
+or
+```
+$ docker pull ewgb/ttrss:mysql
 ```
 
 You can also build the image by cloning this repository and make a `docker build`.
