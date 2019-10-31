@@ -1,4 +1,4 @@
-FROM lightcode/nginx-php:php5.6
+FROM ewgb/nginx-php:php5.6
 
 RUN export DEBIAN_FRONTEND=nonintieractive; \
     apt-get update \

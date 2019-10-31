@@ -1,4 +1,4 @@
-REPO = lightcode/airlift
+REPO = ewgb/airlift
 VERSION = 0.3.1
 
 all: build

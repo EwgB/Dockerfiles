@@ -1,4 +1,4 @@
-REPO = lightcode/nginx-php
+REPO = ewgb/nginx-php
 PHP5_TAG = php5.6
 PHP7_TAG = php7.0
 

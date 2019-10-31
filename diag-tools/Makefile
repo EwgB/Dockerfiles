@@ -1,4 +1,4 @@
-REPO = lightcode/diag-tools
+REPO = ewgb/diag-tools
 
 all: build
 
