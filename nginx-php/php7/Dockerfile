@@ -1,12 +1,13 @@
-FROM lightcode/base-runit
+FROM ewgb/base-runit
 
 RUN export DEBIAN_FRONTEND=nonintieractive; \
-    apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62 \
+    apt-get update \
+    && apt-get install -y -q --no-install-recommends curl \
+    && curl -s http://nginx.org/packages/keys/nginx_signing.key | apt-key add - \
     && echo "deb http://nginx.org/packages/mainline/debian/ jessie nginx" >> /etc/apt/sources.list \
     && apt-get update \
     && apt-get install -y -q --no-install-recommends \
         ca-certificates \
-        curl \
         nginx \
     && echo "deb http://packages.dotdeb.org jessie all" > /etc/apt/sources.list.d/dotdeb.list \
     && curl -s https://www.dotdeb.org/dotdeb.gpg | apt-key add - \

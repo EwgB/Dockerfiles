@@ -1,4 +1,4 @@
-REPO = lightcode/nginx-proxy
+REPO = ewgb/nginx-proxy
 VERSION = 20170407
 
 

@@ -1,4 +1,4 @@
-REPO = lightcode/piwik
+REPO = ewgb/piwik
 VERSION = 3.0.3
 
 all: build

@@ -1,4 +1,4 @@
-REPO = lightcode/base-runit
+REPO = ewgb/base-runit
 
 all: build
 
