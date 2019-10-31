@@ -1,34 +1,40 @@
 ---
-
-version: '2'
+version: "3"
 services:
   mysql:
-    image: mysql
+    image: mysql:latest
+    volumes:
+      - "./mysql-data:/var/lib/mysql"
     environment:
       - MYSQL_ROOT_PASSWORD=rootpassword
       - MYSQL_DATABASE=ttrss
       - MYSQL_USER=ttrss
-      - MYSQL_PASSWORD=ttrsspassword
+      - MYSQL_PASSWORD=ttrss
+    ports:
+      - "127.0.0.1:5432:5432"
 
   ttrss:
-    build: .
     image: ewgb/ttrss:mysql
     ports:
-      - "8080:80"
-    links:
+      - "80:80"
+    depends_on:
       - mysql
     environment:
+      - TTRSS_DB_TYPE=mysql
       - TTRSS_DB_HOST=mysql
+      - TTRSS_DB_PORT=5432
       - TTRSS_DB_USER=ttrss
       - TTRSS_DB_NAME=ttrss
-      - TTRSS_DB_PASS=ttrsspassword
+      - TTRSS_DB_PASS=ttrss
+      - TTRSS_SELF_URL_PATH=http://reader.belzmann.de/
       - TTRSS_FEED_CRYPT_KEY=@HCcMWQ+U_RnSI-HZO76pUJr
+      - VIRTUAL_HOST=reader.belzmann.de
+      - VIRTUAL_PORT=54321
     volumes:
       - "ttrss_cache:/app/cache"
-      - "ttrss_icons:/app/feeds-icons"
+      - "./feed-icons:/app/feed-icons"
+      - "./plugins.local:/app/plugins.local"
 
 volumes:
   ttrss_cache:
-    driver: local
-  ttrss_icons:
     driver: local
